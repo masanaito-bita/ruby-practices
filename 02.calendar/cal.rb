@@ -28,7 +28,7 @@ end
 
 def cal(month, year)
   # 今日の月と西暦を取得し上部に表示
-  head = Date.today.strftime("#{month}月 #{year}")
+  head = "#{month}月 #{year}"
 
   # 今月1日の曜日
   first_dweek = Date.new(year, month, 1).wday # 0~6, 曜日
