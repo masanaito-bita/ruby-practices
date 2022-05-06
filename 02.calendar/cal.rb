@@ -12,18 +12,21 @@ OptionParser.new do |opt|
   opt.parse!(ARGV)
 end
 
+# 今日の日付
+today = Date.today
+
 # 今月の西暦
 if option[:m]
   month = option[:m].to_i
 else
-  month = Date.today.month
+  month = today.month
 end
 
 # 今年の西暦
 if option[:y]
   year = option[:y].to_i
 else
-  year = Date.today.year
+  year = today.year
 end
 
 def cal(month, year)
@@ -43,10 +46,7 @@ def cal(month, year)
   puts head.center(20)
   # weekを横並びにして空白入れてる
   puts week.join(" ")
-  print " " * first_dweek
-
-  # 一週間目を右揃えにする
-  # TODO
+  print "   " * first_dweek
 
   (1..lastday).each do |date|
     # 日時の表示位置を整形
