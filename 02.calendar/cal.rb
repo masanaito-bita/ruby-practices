@@ -12,22 +12,9 @@ OptionParser.new do |opt|
   opt.parse!(ARGV)
 end
 
-# 今日の日付
 today = Date.today
-
-# 今月の西暦
-if option[:m]
-  month = option[:m].to_i
-else
-  month = today.month
-end
-
-# 今年の西暦
-if option[:y]
-  year = option[:y].to_i
-else
-  year = today.year
-end
+month = option[:m] ? option[:m].to_i : today.month
+year = option[:y] ? option[:y].to_i : today.year
 
 def cal(month, year)
   # 今日の月と西暦を取得し上部に表示
