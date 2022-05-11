@@ -21,35 +21,31 @@ def cal(month, year)
   head = "#{month}月 #{year}"
 
   # 今月1日の曜日
-  first_dweek = Date.new(year, month, 1).wday # 0~6, 曜日
+  week = Date.new(year, month, 1).wday # 0~6, 曜日
 
   #今月末日 -1と表記することで取得可能
   lastday = Date.new(year, month, -1).day # 31
 
   # %wは配列を作る表記
-  week = %w(日 月 火 水 木 金 土)
+  weeks = %w(日 月 火 水 木 金 土)
 
   # 中央に揃えてる
   puts head.center(20)
   # weekを横並びにして空白入れてる
-  puts week.join(" ")
-  print "   " * first_dweek
+  puts weeks.join(" ")
+  print "   " * week
 
   (1..lastday).each do |date|
     # 日時の表示位置を整形
     print date.to_s.rjust(2) + " "
 
     # 一週間ごとに改行を入れる
-    first_dweek = first_dweek + 1
-    if first_dweek % 7 == 0
-      print "\n"
+    week = week + 1
+    if week % 7 == 0
+      puts
     end
-  end
-
-  # 最後の1..30を消す
-  if first_dweek % 7 != 0
-    print "\n"
   end
 end
 
-puts cal(month, year)
+cal(month, year)
+puts
