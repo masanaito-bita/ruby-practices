@@ -11,10 +11,12 @@ frames.each_with_index do |frame, i|
   point += frame.sum
   next unless frame.sum == 10 && i < 9
 
+  next_frame = frames[i + 1]
+  after_next_frame = frames[i + 2]
   if frame[0] == 10
-    point += frames[i + 1][0] == 10 ? frames[i + 1][0] + frames[i + 2][0] : frames[i + 1].sum
+    point += next_frame[0] == 10 ? next_frame[0] + after_next_frame[0] : next_frame.sum
   else
-    point += frames[i + 1][0]
+    point += next_frame[0]
   end
 end
 
