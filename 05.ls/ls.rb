@@ -10,11 +10,7 @@ end
 
 def show_files(files)
   files_number = files.size
-  if (files_number % 3) == 0
-    slice_number = files_number / 3
-  else
-    slice_number = files_number / 3 + 1
-  end
+  slice_number = (files_number % 3 == 0) ? files_number / 3 : files_number / 3 + 1
 
   sliced_array = files.each_slice(slice_number).to_a
   third_array = sliced_array.last
